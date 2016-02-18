@@ -1,0 +1,139 @@
+// Media Query Ranges
+$small: 601px;
+$medium: 993px;
+$large: 1201px;
+
+
+// Media Queries
+@mixin screen($screen_width) {
+  @media (min-width: $screen_width ) and (min-height: 0px) {
+    @content;
+  }
+}
+
+// Column Wrapper
+.column_wrapper {
+  position: relative;
+  overflow: visible;
+
+  &:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
+}
+
+// Column
+@mixin column ($width) {
+  float: left;
+  width: $width;
+  position: relative;
+}
+
+
+@mixin scale($unit) {
+  -webkit-transform: scale($unit);
+  -ms-transform: scale($unit);
+  transform: scale($unit);
+}
+
+$accent-color: #64dd17;
+
+
+#cms_news_pkg {
+  display: block !important;
+  text-align: center;
+
+
+  //hover effects
+  a:hover {
+    h5 {
+      color: $accent-color !important;
+    }
+
+    .photo {
+      @include scale(1.05);
+      opacity: 1 !important; 
+    }
+
+
+  }
+
+  .post {
+    margin-bottom: 1rem;
+    @include screen($medium) {
+      @include column(25%);
+    }
+
+    .wrapper {
+      @include screen($medium) {
+        padding: 1rem;
+      }
+    }
+
+
+    .photo_wrapper {
+      overflow: hidden;
+      @include column(25%);
+      @include screen($small) {
+        @include column(15%);
+      }
+      @include screen($medium) {
+        @include column(100%);
+      }
+
+      .photo {
+        transition: all 0.5s ease;
+        opacity: .8;
+        width: 100%;
+        height: auto;
+      }
+
+    }
+
+    .text_wrapper {
+      @include column(75%);
+      padding-left: 1rem;
+      padding-right: 1rem;
+      text-align: left;
+      @include screen($small) {
+        @include column(85%);
+      }
+      @include screen($medium) {
+        @include column(100%);
+        text-align: center;
+        padding-left: 5px;
+        padding-right: 5px;
+        height: 80px;
+        overflow: hidden;
+      }
+
+      .date {
+        text-align: left;
+        color: #999;
+        @include screen($medium) {
+          text-align: center;
+        }
+      }
+
+      h5 {
+        text-align: left;
+        color: #eee;
+        margin-top: 5px;
+        @include screen($medium) {
+          text-align: center;
+        }
+
+      }
+
+    }
+
+  }
+
+  .exhausted {
+    display: none;
+  }
+
+}

@@ -1,0 +1,29 @@
+<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <div class="cms_news_container"></div>
+
+
+    <!-- cms-news-->
+    <script>
+      var cms_news_setup = {
+          'destination': '.cms_news_container',
+          'artist_id': 351,
+          'qty': 4,
+          'view_more': 'inline' // 'inline' or url
+      };
+
+      $.getScript('js/cms_news.min.js', function(){
+        cms_news.app();
+      });
+    </script>
+
+  </body>
+</html>
